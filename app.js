@@ -15,9 +15,7 @@ app.use(express.json()); // Middleware
 //   res.send('You can post to this endpoint...');
 // });
 
-const tours = JSON.parse(
-    fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
-);
+const tours = JSON.parse(fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`));
 
 app.get('/api/v1/tours', (req, res) => {
     res.status(200).json({
@@ -25,6 +23,29 @@ app.get('/api/v1/tours', (req, res) => {
         results: tours.length,
         data: {
             tours
+        }
+    });
+});
+
+app.get('/api/v1/tours/:id', (req, res) => {
+    console.log(req.params);
+    // const id = req.params.id * 1;
+    const id = parseInt(req.params.id);
+    const tour = tours.find(el => el.id === id);
+    
+    // if (id > tours.length) {
+    if (!tour) {
+        return res.status(404).json({
+            status: 'fail',
+            message: 'invalid id'
+        });
+    }
+
+
+    res.status(200).json({
+        status: 'success',
+        data: {
+            tour
         }
     });
 });
@@ -37,18 +58,14 @@ app.post('/api/v1/tours', (req, res) => {
 
     tours.push(newTour);
 
-    fs.writeFile(
-        `${__dirname}/dev-data/data/tours-simple.json`,
-        JSON.stringify(tours),
-        err => {
-            res.status(201).json({
-                status: 'success',
-                data: {
-                    tour: newTour
-                }
-            });
-        }
-    );
+    fs.writeFile(`${__dirname}/dev-data/data/tours-simple.json`, JSON.stringify(tours), err => {
+        res.status(201).json({
+            status: 'success',
+            data: {
+                tour: newTour
+            }
+        });
+    });
 });
 
 const port = 1337;
