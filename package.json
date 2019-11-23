@@ -1,10 +1,10 @@
 {
   "name": "natours_node.js",
-  "version": "1.4.3",
+  "version": "1.5.3",
   "description": "Learning node, express and mongoDB",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
