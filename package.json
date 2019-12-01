@@ -1,10 +1,10 @@
 {
   "name": "natours_node.js",
-  "version": "1.7.6",
+  "version": "1.8.6",
   "description": "Learning node, express and mongoDB",
   "main": "app.js",
   "scripts": {
-    "start:dev": "nodemon server.js",
+    "start": "nodemon server.js",
     "start:prod": "NODE_ENV=production nodemon server.js"
   },
   "repository": {
@@ -20,6 +20,7 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "mongoose": "^5.7.13",
     "morgan": "^1.9.1"
   },
   "devDependencies": {
