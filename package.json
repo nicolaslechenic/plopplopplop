@@ -1,6 +1,6 @@
 {
   "name": "natours_node.js",
-  "version": "1.8.9",
+  "version": "1.9.0",
   "description": "Learning node, express and mongoDB",
   "main": "app.js",
   "scripts": {
@@ -33,5 +33,8 @@
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.17.0",
     "prettier": "^1.19.1"
+  },
+  "engines": {
+    "node": ">=10.0.0"
   }
 }
