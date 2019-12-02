@@ -40,6 +40,7 @@ exports.getAllTours = async (req, res) => {
         //     .equals(5)
         //     .where('difficulty')
         //     .equals('easy');
+
         // SEND RESPONSE
         res.status(200).json({
             status: 'success',
@@ -58,13 +59,18 @@ exports.getAllTours = async (req, res) => {
 
 exports.getTour = async (req, res) => {
     try {
+        // search a single tour by ID
         const tour = await Tour.findById(req.params.id);
         // Tour.findOne({ _id: req.params.id })
+
+        // search a single tour by name
+        //const name = await Tour.findOne(req.params.name);
 
         res.status(200).json({
             status: 'success',
             data: {
                 tour
+                //name
             }
         });
     } catch (err) {
