@@ -1,6 +1,6 @@
 {
   "name": "natours_node.js",
-  "version": "2.0.1",
+  "version": "2.1.1",
   "description": "Learning node, express and mongoDB",
   "main": "app.js",
   "scripts": {
