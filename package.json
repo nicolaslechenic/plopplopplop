@@ -1,6 +1,6 @@
 {
   "name": "natours_node.js",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Learning node, express and mongoDB",
   "main": "app.js",
   "scripts": {
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Slashflex/Natours_node.js#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.7.13",
