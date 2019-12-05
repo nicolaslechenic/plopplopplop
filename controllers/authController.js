@@ -15,7 +15,9 @@ const signToken = id => {
 const createSendToken = (user, statusCode, res) => {
     const token = signToken(user._id);
     const cookieOptions = {
-        expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000),
+        expires: new Date(
+            Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+        ),
         httpOnly: true
     };
 
@@ -75,7 +77,9 @@ exports.protect = catchAsync(async (req, res, next) => {
     }
 
     if (!token) {
-        return next(new AppError('You are not logged in! Please login to get access', 401));
+        return next(
+            new AppError('You are not logged in! Please login to get access', 401)
+        );
     }
 
     // 2. Verification token
@@ -84,12 +88,16 @@ exports.protect = catchAsync(async (req, res, next) => {
     // 3. Check if user still exists
     const currentUser = await User.findById(decoded.id);
     if (!currentUser) {
-        return next(new AppError('The user belonging to this token does no longer exists.', 401));
+        return next(
+            new AppError('The user belonging to this token does no longer exists.', 401)
+        );
     }
 
     // 4. Check if user changed password after the token was issued
     if (currentUser.changedPasswordAfter(decoded.iat)) {
-        return next(new AppError('User recently changed password! Please login again.', 401));
+        return next(
+            new AppError('User recently changed password! Please login again.', 401)
+        );
     }
 
     // GRANT ACCESS TO PROTECTED ROUTE
@@ -100,7 +108,9 @@ exports.protect = catchAsync(async (req, res, next) => {
 exports.restrictTo = (...roles) => {
     return (req, res, next) => {
         if (!roles.includes(req.user.role)) {
-            return next(new AppError('You do not have permission to perform this action', 403));
+            return next(
+                new AppError('You do not have permission to perform this action', 403)
+            );
         }
 
         next();
@@ -141,7 +151,9 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
         user.passwordResetExpires = undefined;
         await user.save({ validateBeforeSave: false });
 
-        return next(new AppError('There was an error sending the email. Try again later!', 500));
+        return next(
+            new AppError('There was an error sending the email. Try again later!', 500)
+        );
     }
 });
 
