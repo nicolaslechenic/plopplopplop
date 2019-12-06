@@ -1,3 +1,9 @@
+# Ignore this folder with all packages required
 node_modules
+
+# Environment files
 config.env
 *.env
+
+# Parcer cache files
+.cache
