@@ -19,8 +19,8 @@ const createSendToken = (user, statusCode, req, res) => {
     expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
-    httpOnly: true,
-    secure: req.secure || req.headers['x-forwarded-proto'] === 'https'
+    httpOnly: true
+    //secure: req.secure || req.headers['x-forwarded-proto'] === 'https'
   });
 
   // Remove password from output
@@ -40,11 +40,11 @@ exports.signup = catchAsync(async (req, res, next) => {
     name: req.body.name,
     email: req.body.email,
     password: req.body.password,
-    passwordConfirm: req.body.passwordConfirm
+    passwordConfirm: req.body.passwordConfirm,
+    role: req.body.role
   });
 
   const url = `${req.protocol}://${req.get('host')}/me`;
-  // console.log(url);
   await new Email(newUser, url).sendWelcome();
 
   createSendToken(newUser, 201, req, res);

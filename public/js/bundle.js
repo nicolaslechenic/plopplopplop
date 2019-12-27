@@ -8389,7 +8389,7 @@ exports.showAlert = showAlert;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.logout = exports.login = void 0;
+exports.signup = exports.logout = exports.login = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
 
@@ -8477,6 +8477,56 @@ var logout = function logout() {
 };
 
 exports.logout = logout;
+
+var signup = function signup(name, email, password, passwordConfirm) {
+  var res;
+  return regeneratorRuntime.async(function signup$(_context3) {
+    while (1) {
+      switch (_context3.prev = _context3.next) {
+        case 0:
+          console.log(name, email, password, passwordConfirm);
+          _context3.prev = 1;
+          _context3.next = 4;
+          return regeneratorRuntime.awrap((0, _axios.default)({
+            method: 'POST',
+            url: '/api/v1/users/signup',
+            data: {
+              name: name,
+              email: email,
+              password: password,
+              passwordConfirm: passwordConfirm
+            }
+          }));
+
+        case 4:
+          res = _context3.sent;
+
+          if (res.data.status === 'success') {
+            (0, _alerts.showAlert)('success', 'Signed in successfully!');
+            window.setTimeout(function () {
+              location.assign('/me');
+            }, 1500);
+          }
+
+          console.log(res);
+          _context3.next = 13;
+          break;
+
+        case 9:
+          _context3.prev = 9;
+          _context3.t0 = _context3["catch"](1);
+          (0, _alerts.showAlert)('error', _context3.t0);
+          console.log(_context3.t0);
+
+        case 13:
+        case "end":
+          return _context3.stop();
+      }
+    }
+  }, null, null, [[1, 9]]);
+};
+
+exports.signup = signup;
 },{"axios":"../../node_modules/axios/index.js","./alerts":"alerts.js"}],"updateSettings.js":[function(require,module,exports) {
 "use strict";
 
@@ -8861,6 +8911,7 @@ var _alerts = require("./alerts");
 // DOM ELEMENTS
 var mapBox = document.getElementById('map');
 var loginForm = document.querySelector('.form--login');
+var signupForm = document.getElementById('signup-form');
 var logOutBtn = document.querySelector('.nav__el--logout');
 var userDataForm = document.querySelector('.form-user-data');
 var userPasswordForm = document.querySelector('.form-user-password');
@@ -8877,6 +8928,20 @@ if (loginForm) loginForm.addEventListener('submit', function (e) {
   var password = document.getElementById('password').value;
   (0, _login.login)(email, password);
 });
+
+if (signupForm) {
+  console.log('It exists');
+  document.querySelector('.form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+    var passwordConfirm = document.getElementById('passwordConfirm').value;
+    (0, _login.signup)(name, email, password, passwordConfirm);
+    console.log('Sign up clicked');
+  });
+}
+
 if (logOutBtn) logOutBtn.addEventListener('click', _login.logout);
 if (userDataForm) userDataForm.addEventListener('submit', function (e) {
   e.preventDefault();
@@ -8952,7 +9017,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36237" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46171" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
