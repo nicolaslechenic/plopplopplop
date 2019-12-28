@@ -8484,9 +8484,8 @@ var signup = function signup(name, email, password, passwordConfirm) {
     while (1) {
       switch (_context3.prev = _context3.next) {
         case 0:
-          console.log(name, email, password, passwordConfirm);
-          _context3.prev = 1;
-          _context3.next = 4;
+          _context3.prev = 0;
+          _context3.next = 3;
           return regeneratorRuntime.awrap((0, _axios.default)({
             method: 'POST',
             url: '/api/v1/users/signup',
@@ -8498,7 +8497,7 @@ var signup = function signup(name, email, password, passwordConfirm) {
             }
           }));
 
-        case 4:
+        case 3:
           res = _context3.sent;
 
           if (res.data.status === 'success') {
@@ -8509,21 +8508,21 @@ var signup = function signup(name, email, password, passwordConfirm) {
           }
 
           console.log(res);
-          _context3.next = 13;
+          _context3.next = 12;
           break;
 
-        case 9:
-          _context3.prev = 9;
-          _context3.t0 = _context3["catch"](1);
+        case 8:
+          _context3.prev = 8;
+          _context3.t0 = _context3["catch"](0);
           (0, _alerts.showAlert)('error', _context3.t0);
           console.log(_context3.t0);
 
-        case 13:
+        case 12:
         case "end":
           return _context3.stop();
       }
     }
-  }, null, null, [[1, 9]]);
+  }, null, null, [[0, 8]]);
 };
 
 exports.signup = signup;
@@ -8930,7 +8929,6 @@ if (loginForm) loginForm.addEventListener('submit', function (e) {
 });
 
 if (signupForm) {
-  console.log('It exists');
   document.querySelector('.form').addEventListener('submit', function (e) {
     e.preventDefault();
     var name = document.getElementById('name').value;
@@ -8938,7 +8936,6 @@ if (signupForm) {
     var password = document.getElementById('password').value;
     var passwordConfirm = document.getElementById('passwordConfirm').value;
     (0, _login.signup)(name, email, password, passwordConfirm);
-    console.log('Sign up clicked');
   });
 }
 
@@ -9017,7 +9014,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46171" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46771" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

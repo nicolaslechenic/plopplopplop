@@ -30,7 +30,6 @@ if (loginForm)
   });
 
 if (signupForm) {
-  console.log('It exists');
   document.querySelector('.form').addEventListener('submit', e => {
     e.preventDefault();
     const name = document.getElementById('name').value;
@@ -38,7 +37,6 @@ if (signupForm) {
     const password = document.getElementById('password').value;
     const passwordConfirm = document.getElementById('passwordConfirm').value;
     signup(name, email, password, passwordConfirm);
-    console.log('Sign up clicked');
   });
 }
 
