@@ -1,0 +1,41 @@
+.navigation
+  input#navi-toggle.navigation__checkbox(type='checkbox')
+  label.navigation__button(for='navi-toggle')
+    span.navigation__icon  
+  .navigation__background  
+  nav.navigation__nav
+    ul.navigation__list
+      li.navigation__item
+        a.navigation__link(href='/')
+          span 01
+          | Home
+      if user
+        li.navigation__item
+          a.navigation__link.logout
+            span 02
+            |  Logout
+        li.navigation__item
+          a.navigation__link(href='/me')
+            span 03
+            | My Profile
+      else
+        li.navigation__item
+          a.navigation__link(href='/login')
+            span 02
+            | Login
+        li.navigation__item
+          a.navigation__link(href='/signup')
+            span 03
+            | Sign up
+      li.navigation__item
+        a.navigation__link(href='/tours')
+          span 04
+          | All tours
+      li.navigation__item
+        a.navigation__link(href='../#section-tours')
+          span 05
+          | Popular tours
+      li.navigation__item
+        a.navigation__link(href='/api')
+          span 06
+          | API doc
