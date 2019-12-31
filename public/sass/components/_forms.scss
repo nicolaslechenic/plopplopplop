@@ -14,7 +14,7 @@
 }
 
 .form {
-
+  
   &__input1 {
     display: block;
     font-family: inherit;
@@ -68,12 +68,12 @@
       outline: none;
       box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
       border-bottom: 3px solid $color-primary;
-    
+
       &:invalid {
         border-bottom: 3px solid $color-secondary-dark;
       }
     }
-    
+
     &::-webkit-input-placeholder {
       color: $color-gray-dark-3;
       font-weight: 300;
@@ -99,12 +99,12 @@
       outline: none;
       box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
       border-bottom: 3px solid $color-primary;
-    
+
       &:invalid {
         border-bottom: 3px solid $color-secondary-dark;
       }
     }
-    
+
     &::-webkit-input-placeholder {
       color: $color-gray-dark-1;
       font-weight: 700;
@@ -176,7 +176,7 @@
       outline-offset: 3px;
     }
   }
-  
+
   &__input:placeholder-shown + &__label {
     opacity: 0;
     visibility: hidden;
@@ -195,3 +195,69 @@
     transform: translateY(-4rem);
   }
 }
+
+.book {
+  background-image: linear-gradient(
+      105deg,
+      rgba($color-white, 0.9) 0%,
+      rgba($color-white, 0.9) 50%,
+      transparent 50%
+    ),
+    url(../img/nat-10.jpg);
+  background-size: cover;
+  box-shadow: 0 1.5rem 4rem rgba($color-black, 0.2);
+
+  @include respond(tab-land) {
+    background-image: linear-gradient(
+        105deg,
+        rgba($color-white, 0.9) 0%,
+        rgba($color-white, 0.9) 65%,
+        transparent 65%
+      ),
+      url(../img/nat-10.jpg);
+    background-size: cover;
+  }
+
+  @include respond(tab-port) {
+    background-image: linear-gradient(
+        to right,
+        rgba($color-white, 0.9) 0%,
+        rgba($color-white, 0.9) 100%
+      ),
+      url(../img/nat-10.jpg);
+  }
+
+  @include respond(tab-port) {
+    background-image: linear-gradient(
+        105deg,
+        rgba($color-white, 0.9) 0%,
+        rgba($color-white, 0.9) 65%,
+        transparent 65%
+      ),
+      url(../img/nat-10.jpg);
+    background-size: cover;
+  }
+
+  @include respond(tab-port) {
+    background-image: linear-gradient(
+        to right,
+        rgba($color-white, 0.9) 0%,
+        rgba($color-white, 0.9) 100%
+      ),
+      url(../img/nat-10.jpg);
+  }
+
+  &__form {
+    width: 50%;
+    padding: 6rem;
+
+    @include respond(tab-port) {
+      width: 65%;
+    }
+
+    @include respond(tab-port) {
+      width: 100%;
+    }
+  }
+}
+
