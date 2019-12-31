@@ -1,0 +1,172 @@
+// Head
+include partials/_head
+
+// Navigation
+include partials/_navigation
+
+header.header
+	.header__logo-box
+		img.header__logo(src='/img/logo-white.png' alt='Logo')
+	.header__text-box
+		h1.heading-primary
+			span.heading-primary--main Outdoors
+			span.heading-primary--sub Is where life happens
+		a.btn.btn--white.btn--animated(href='/tours') Discover our tours
+
+main
+	// About Section
+	section.section-about
+		.u-center-text.u-margin-bottom-big
+			h2.heading-secondary
+				| Exciting tours for adventurous people
+		.row
+			.col-1-of-2
+				h3.heading-tertiary.u-margin-bottom-small
+					| You're going to fall in love with nature
+				p.paragraph
+					| Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, assumenda eum pariatur aliquid doloremque odit accusantium quos? Delectus odio labore quam, perspiciatis repellat sint cum nostrum illo non tenetur asperiores.
+				h3.heading-tertiary.u-margin-bottom-small
+					| Live adventures like you have never before
+				p.paragraph
+					| Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam laborum sit nisi. Possimus laudantium alias, molestias, provident iure, voluptatum obcaecati ex facilis ?
+				a.btn-text(href='/tours') Learn more →
+			.col-1-of-2
+				.composition
+					img.composition__photo.composition__photo--p1(srcset='/img/nat-1.jpg 300w, /img/nat-1-large 1000w' sizes='(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px' alt='Photo 1' src='/img/nat-1-large.jpg')
+					img.composition__photo.composition__photo--p2(srcset='/img/nat-2.jpg 300w, /img/nat-2-large 1000w' sizes='(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px' alt='Photo 2' src='/img/nat-2-large.jpg')
+					img.composition__photo.composition__photo--p3(srcset='/img/nat-3.jpg 300w, /img/nat-3-large 1000w' sizes='(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px' alt='Photo 3' src='/img/nat-3-large.jpg')
+	// End of About Section
+
+	// Features Section
+	section.section-features
+		.row
+			.col-1-of-4
+				.feature-box.border-radius-small
+					i.feature-box__icon.icon-basic-world
+					h3.heading-tertiary.u-margin-bottom-small Explore the world
+					p.feature-box__text
+						| Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam laborum sit nisi. Possimus laudantium alias, molestias.
+			.col-1-of-4
+				.feature-box.border-radius-small
+					i.feature-box__icon.icon-basic-compass
+					h3.heading-tertiary.u-margin-bottom-small Meet nature
+					p.feature-box__text
+						| Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam laborum sit nisi. Possimus laudantium alias, molestias.
+			.col-1-of-4
+				.feature-box.border-radius-small
+					i.feature-box__icon.icon-basic-map
+					h3.heading-tertiary.u-margin-bottom-small Find your way
+					p.feature-box__text
+						| Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam laborum sit nisi. Possimus laudantium alias, molestias.
+			.col-1-of-4
+				.feature-box.border-radius-small
+					i.feature-box__icon.icon-basic-heart
+					h3.heading-tertiary.u-margin-bottom-small Live a healthier life
+					p.feature-box__text
+						| Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam laborum sit nisi. Possimus laudantium alias, molestias.
+	// End of Features Section
+
+	// Tours Section
+	section#section-tours.section-tours
+		.u-center-text.u-margin-bottom-big
+			h2.heading-secondary
+				| Most popular tours
+		.row
+			each tour in tours	
+				.col-1-of-3
+					.card
+						.card__side.card__side--front
+							- const imgClass = `card__picture card__picture--${tour.imageCover.split('-')[1]}`;
+							div(class=`${imgClass.split(' ').join(' ')}`) 
+							
+							h4.card__heading
+								span.card__heading-span.card__heading-span--1
+									| #{tour.name}
+							
+							.card__details
+								ul
+									li= `${tour.duration} days tour`
+									li= `Up to ${tour.maxGroupSize} people`
+									li= `${tour.guides.length} tour guides`
+									li Sleep in cozy hotels
+									//- li= `Difficulty: ${tour.difficulty}`
+									li= `Average ratings: ${tour.ratingsAverage}/5`
+						.card__side.card__side--back.card__side--back-1.border-radius-small
+							.card__cta
+								.card__price-box
+									p.card__price-only
+										| Only	
+									p.card__price-value
+										| $#{tour.price}
+								a.btn.btn--white(href=`tour/${tour.slug}`) Book now!
+			
+
+		.u-center-text.u-margin-top-huge
+			a.btn.btn--green(href='/tours') Discover all tours
+	// End of Tours Section
+
+	// Stories Section
+	section.section-stories
+		.bg-video
+			video.bg-video__content(autoplay='' loop='' muted='')
+				source(src='/img/video.mp4' type='video/mp4')
+				source(src='/img/video.webm' type='video/webm')
+				|                         Your browser is not supported!
+		.u-center-text.u-margin-bottom-big
+			h2.heading-secondary
+				| We make people genuinely happy
+		each review in reviews
+			.row
+				.story.border-radius-small
+					figure.story__shape
+						img.story__img(src=`/img/users/${review.user.photo}` alt='Person on a tour')
+						figcaption.story__caption
+							| #{review.user.name}
+					.story__text
+						h3.heading-tertiary.u-margin-bottom-small
+							| #{review.title}
+						p
+							| #{review.review}
+						br
+					.reviews__rating
+						each star in [1, 2, 3, 4, 5]
+							svg.reviews__star(class=`reviews__star--${review.rating >= star ? 'active' : 'inactive'}`)
+								use(xlink:href='/img/icons.svg#icon-star')
+		.u-center-text.u-margin-top-huge
+			if user
+				a.btn-text(href='#') Read all stories →
+			else 
+				a.btn-text(href='/login') Login in to view all stories →
+
+				
+	// End of Stories Section
+	// Booking Section
+	section.section-book
+		.row
+			.book.border-radius-small
+				.book__form
+					form.form.form--signup(id="signup-form")
+						.u-margin-bottom-medium
+							h2.heading-secondary.u-center-text.u-margin-bottom-medium
+								| Sign up to start booking now
+							.form__group
+								input#name.form__input1(type='text' placeholder='Full name' required)
+								label.form__label(for='name') Full name
+							.form__group
+								input#email.form__input1(type='email' placeholder='Email' required)
+								label.form__label(for='email') Email address
+							.form__group
+								input#password.form__input1(type='password' placeholder='Password' required)
+								label.form__label(for='password') Password
+							.form__group
+								input#passwordConfirm.form__input1(type='password' placeholder='Password Confirmation' required)
+								label.form__label(for='passwordConfirm') Password Confirmation
+						.form__group
+							button.btn.btn--green Register →
+	// End of Booking Section
+
+// Footer
+include partials/_footer
+
+// JS Scripts
+include partials/_scripts
