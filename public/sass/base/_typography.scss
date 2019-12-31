@@ -1,0 +1,169 @@
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 1.7;
+  color: $color-gray-dark-1;
+}
+
+.heading-primary {
+  color: $color-white;
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  margin-bottom: 6rem;
+
+  &--main {
+      display: block;
+      font-size: 6rem;
+      font-weight: 400;
+      letter-spacing: 3.5rem;
+      animation: moveInLeft 1s ease-out;
+
+      @include respond(phone) { 
+          letter-spacing: 1rem;
+          font-size: 5rem;
+      }
+  }
+  
+  &--sub {
+      display: block;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 1.75rem;
+      animation: moveInRight 1s ease-out;
+
+      @include respond(phone) { 
+          letter-spacing: .5rem;
+      }
+  }
+}
+
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+  display: inline-block;
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: .2rem;
+  transition: all .2s;
+  text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);
+
+  @include respond(tab-port) {
+    font-size: 3rem;
+  }
+
+  @include respond(phone) {
+    font-size: 2.5rem;
+  }
+
+  // &:hover {
+  //     transform: skewY(2deg) skewX(15deg) scale(1.1);
+  //     text-shadow: .5rem 1rem 2rem rgba($color-black, .2);
+  // }
+}
+
+.heading-tertiary {
+  font-size: $default-font-size;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.paragraph {
+  font-size: $default-font-size;
+  
+  &:not(:last-child) {
+      margin-bottom: 3rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.heading-secondary1 {
+  font-size: 2.25rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  background-image: linear-gradient(to right, #7dd56f, #28b487);
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: 0.1rem;
+  line-height: 1.3;
+  display: block;
+}
+.heading-secondary1--error {
+  background-image: linear-gradient(to right, #ff7730, #eb4d4b);
+  font-size: 3.5rem;
+}
+
+.heading-primary1,
+.heading-tertirary1,
+.heading-primary3 {
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+.heading-primary1 span,
+.heading-tertirary1 span,
+.heading-primary3 span {
+  padding: 1rem 1.5rem;
+  line-height: 1;
+  box-decoration-break: clone;
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(125, 213, 111, 0.85),
+    rgba(40, 180, 135, 0.85)
+  );
+  -webkit-box-decoration-break: clone;
+}
+
+.heading-primary1 {
+  font-size: 5rem;
+  text-align: center;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.heading-tertirary1 {
+  font-size: 2.75rem;
+  text-align: right;
+  position: absolute;
+  bottom: 1rem;
+  right: 2rem;
+  width: 70%;
+  z-index: 10;
+}
+
+.heading-primary3 {
+  font-size: 5rem;
+  text-align: center;
+  width: 70%;
+  margin: 0 auto;
+
+  @include respond(tab-port) {
+    font-size: 4rem;
+  }
+
+  @include respond(tab-land) {
+    font-size: 3rem;
+  }
+
+  @include respond(phone) {
+    font-size: 3rem;
+    width: 100%;
+  }
+
+  @include respond(phone-small) {
+    font-size: 2.5rem;
+    width: 100%;
+  }
+}
