@@ -1,0 +1,45 @@
+footer.footer
+  .footer__logo-box.u-margin-bottom-big
+    picture.footer__logo
+      a(href='/')
+        source(srcset='/img/logo-green-small-1x.png 1x, /img/logo-green-2x.png 2x' media='(max-width: 37.5em)')
+        img.footer__logo(srcset='/img/logo-green-1x.png 1x, /img/logo-green-2x.png 2x' alt='Full logo' src='/img/logo-green-small-2x.png')
+  .row
+    .col-1-of-2
+      .footer__navigation
+        ul.footer__list
+          li.footer__item
+            a.footer__link(href='#') Company
+          li.footer__item
+            a.footer__link(href='/contact') Contact me
+          li.footer__item
+            a.footer__link(href='#') Careers
+          li.footer__item
+            a.footer__link(href='#') Privacy policy
+          li.footer__item
+            a.footer__link(href='#') Terms
+    .col-1-of-2
+      p.footer__copyright
+        | Built with 💚 by 
+        a.footer__link(href='https://github.com/Slashflex') David Saoud
+        | . Powered by 
+        a.footer__link(href='https://www.mapbox.com/') MapBox
+        |  and 
+        a.footer__link(href='https://stripe.com/') Stripe
+  
+  .footer__social
+    ul.footer__list1
+      li.footer__item1
+        a(href='https://nodejs.org/en/').footer__icon
+          i.devicon-nodejs-plain
+      li.footer__item1
+        a(href='https://expressjs.com/').footer__icon
+          i.devicon-express-original(style="font-weight: 400")
+      li.footer__item1
+        a(href='https://www.mongodb.com/').footer__icon
+          i.devicon-mongodb-plain
+      li.footer__item1
+        a(href='https://github.com/Slashflex/').footer__icon
+          i.devicon-github-plain
+      
+      
