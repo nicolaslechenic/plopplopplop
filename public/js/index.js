@@ -9,7 +9,7 @@ import { showAlert } from './alerts';
 // DOM ELEMENTS
 const mapBox = document.getElementById('map');
 const loginForm = document.querySelector('.form--login');
-const logOutBtn = document.querySelector('.nav__el--logout');
+const logOutBtn = document.querySelector('.logout');
 const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
 const bookBtn = document.getElementById('book-tour');
@@ -40,7 +40,13 @@ if (signupForm) {
   });
 }
 
-if (logOutBtn) logOutBtn.addEventListener('click', logout);
+if (logOutBtn) 
+  logOutBtn.addEventListener('click', e => {
+    const nav = document.querySelector('.navigation');
+
+    nav.style.display = 'none';
+    logout();
+  });
 
 if (userDataForm)
   userDataForm.addEventListener('submit', e => {
@@ -50,7 +56,7 @@ if (userDataForm)
     form.append('email', document.getElementById('email').value);
     form.append('photo', document.getElementById('photo').files[0]);
 
-    updateSettings(form, 'data');
+    updateSettings(form, 'Your informations have been');
   });
 
 if (userPasswordForm)
@@ -61,7 +67,7 @@ if (userPasswordForm)
     const passwordCurrent = document.getElementById('password-current').value;
     const password = document.getElementById('password').value;
     const passwordConfirm = document.getElementById('password-confirm').value;
-    await updateSettings({ passwordCurrent, password, passwordConfirm }, 'password');
+    await updateSettings({ passwordCurrent, password, passwordConfirm }, 'Password');
 
     document.querySelector('.btn--save-password').textContent = 'Save password';
     document.getElementById('password-current').value = '';
