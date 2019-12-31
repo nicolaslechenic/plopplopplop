@@ -1,6 +1,7 @@
 const Tour = require('../models/tourModel');
 const User = require('../models/userModel');
 const Booking = require('../models/bookingModel');
+const Review = require('../models/reviewModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
@@ -91,5 +92,24 @@ exports.updateUserData = catchAsync(async (req, res, next) => {
   res.status(200).render('account', {
     title: 'Your account',
     user: updatedUser
+  });
+});
+
+exports.getIndex = catchAsync(async (req, res, next) => {
+  // 1) Filter the 3 best rated tours
+  const tours = await Tour.find({
+    ratingsAverage: { $gte: 4.8 }
+  });
+
+  // 2)rating[gte]=5&limit=2
+  const reviews = await Review.find({
+    rating: { $gt: 4.8 }
+  }).limit(2);
+
+  // 2) Render template using data from 1)
+  res.status(200).render('index', {
+    title: 'Exciting tours for adventurous people',
+    tours,
+    reviews
   });
 });

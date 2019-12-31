@@ -1,0 +1,103 @@
+.cta {
+  position: relative;
+  max-width: 105rem;
+  margin: 0 auto;
+  overflow: hidden;
+  background-color: $color-white;
+  padding: 9rem 5rem 9rem 21rem;
+  border-radius: 2rem;
+  box-shadow: 0 3rem 8rem 0.5rem rgba($color-black, 0.15);
+
+  @include respond(phone) {
+    padding: 3rem 0rem 3rem 5rem;
+  }
+  
+  &__btn {
+
+    @include respond(phone) {
+      text-align: center;
+      margin-left: -3rem;
+    }
+  }
+
+  &__img {
+    height: 15rem;
+    width: 15rem;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    border-radius: 50%;
+    box-shadow: 1rem 0.5rem 3rem rgba($color-black, 0.15);
+  
+    @include respond(phone) {
+      display: none;
+    }
+
+    @include respond(phone-small) {
+      display: block;
+    }
+
+    &--logo {
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+      z-index: 10;
+      transform: translate(-35%, -50%);
+
+      @include respond(phone) {
+        transform: translate(-35%, -50%);
+      }
+
+      @include respond(phone-small) {
+        transform: translate(472%, 4%) scale(0.94);
+        z-index: 9;
+        width: 7rem;
+        height: 7rem;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+
+    &--1 {
+      transform: translate(-10%, -50%) scale(0.97);
+      z-index: 9;
+
+      @include respond(phone-small) {
+        transform: translate(544%, 4%) scale(0.94);
+        z-index: 11;
+        width: 7rem;
+        height: 7rem;
+      }
+    }
+
+    &--2 {
+      transform: translate(15%, -50%) scale(0.94);
+      z-index: 8;
+
+      @include respond(phone-small) {
+        transform: translate(504%, 4%) scale(0.94);
+        z-index: 10;
+        width: 7rem;
+        height: 7rem;
+      }
+    }
+  }
+
+  &__content {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr auto;
+    grid-gap: 0.7rem;
+    grid-auto-flow: column;
+    align-items: center;
+  }
+
+  &__text {
+    font-size: 1.9rem;
+    font-weight: 400;
+  }
+}
