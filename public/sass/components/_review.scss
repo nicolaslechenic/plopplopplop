@@ -9,9 +9,9 @@
   &__card {
     width: 30rem;
     padding: 4rem;
-    background-color: #f7f7f7;
+    background-color: $color-gray-light-1;
     border-radius: 3px;
-    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+    box-shadow: 0 1.5rem 4rem rgba($color-white, 0.15);
     scroll-snap-align: center;
     display: flex;
     flex-direction: column;
@@ -59,7 +59,7 @@
     width: 2rem;
     margin-right: 1px;
 
-    &--active { fill: #55c57a; }
-    &--inactive { fill: #bbb; }
+    &--active { fill: $color-primary; }
+    &--inactive { fill: $color-gray-light-3; }
   }
 }
