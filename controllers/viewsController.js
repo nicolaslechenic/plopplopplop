@@ -1,3 +1,4 @@
+const path = require('path');
 const Tour = require('../models/tourModel');
 const User = require('../models/userModel');
 const Booking = require('../models/bookingModel');
@@ -101,7 +102,7 @@ exports.getIndex = catchAsync(async (req, res, next) => {
     ratingsAverage: { $gte: 4.8 }
   });
 
-  // 2)rating[gte]=5&limit=2
+  // 2) rating[gte]=5&limit=2
   const reviews = await Review.find({
     rating: { $gt: 4.8 }
   }).limit(2);
@@ -111,5 +112,11 @@ exports.getIndex = catchAsync(async (req, res, next) => {
     title: 'Exciting tours for adventurous people',
     tours,
     reviews
+  });
+});
+
+exports.getApiDoc = catchAsync(async (req, res, next) => {
+  res.status(200).sendFile(path.join(__dirname, './../public/api-doc.html'), {
+    title: 'Api documentation'
   });
 });
