@@ -1,22 +1,35 @@
 const express = require('express');
-const viewsController = require('../controllers/viewsController');
-const authController = require('../controllers/authController');
+const {
+  alerts,
+  getIndex,
+  getOverview,
+  getTour,
+  getLoginForm,
+  getAccount,
+  getSignupForm,
+  getMyTours,
+  updateUserData,
+  getApiDoc
+} = require('../controllers/viewsController');
+const { isLoggedIn, protect } = require('../controllers/authController');
 
 const router = express.Router();
 
-router.use(viewsController.alerts);
+router.use(alerts);
 
-router.get('/', authController.isLoggedIn, viewsController.getIndex);
+router.get('/', isLoggedIn, getIndex);
 
-router.get('/tours', authController.isLoggedIn, viewsController.getOverview);
+router.get('/tours', isLoggedIn, getOverview);
 
-router.get('/tour/:slug', authController.isLoggedIn, viewsController.getTour);
-router.get('/login', authController.isLoggedIn, viewsController.getLoginForm);
-router.get('/me', authController.protect, viewsController.getAccount);
-router.get('/signup', authController.isLoggedIn, viewsController.getSignupForm);
+router.get('/tour/:slug', isLoggedIn, getTour);
+router.get('/login', isLoggedIn, getLoginForm);
+router.get('/me', protect, getAccount);
+router.get('/signup', isLoggedIn, getSignupForm);
 
-router.get('/my-tours', authController.protect, viewsController.getMyTours);
+router.get('/my-tours', protect, getMyTours);
 
-router.post('/submit-user-data', authController.protect, viewsController.updateUserData);
+router.post('/submit-user-data', protect, updateUserData);
+
+router.get('/api-doc', getApiDoc);
 
 module.exports = router;
