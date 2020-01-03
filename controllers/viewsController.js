@@ -10,10 +10,11 @@ exports.alerts = (req, res, next) => {
   const { alert } = req.query;
   if (alert === 'booking')
     res.locals.alert =
-      "Your booking was successful! Please check your email for a confirmation. If your booking doesn't show up here immediatly, please come back later.";
+      'Your booking was successful! Booked tour will show up here shortly!';
   next();
 };
 
+// get all tours
 exports.getOverview = catchAsync(async (req, res, next) => {
   // 1) Get tour data from collection
   const tours = await Tour.find();
@@ -22,10 +23,12 @@ exports.getOverview = catchAsync(async (req, res, next) => {
   // 3) Render that template using tour data from 1)
   res.status(200).render('overview', {
     title: 'All Tours',
+    subtitle: null,
     tours
   });
 });
 
+// get single tour by slug
 exports.getTour = catchAsync(async (req, res, next) => {
   // 1) Get the data, for the requested tour (including reviews and guides)
   const tour = await Tour.findOne({ slug: req.params.slug }).populate({
@@ -45,20 +48,23 @@ exports.getTour = catchAsync(async (req, res, next) => {
   });
 });
 
+// get login form
 exports.getLoginForm = (req, res) => {
   res.status(200).render('login', {
     title: 'Log into your account'
   });
 };
 
+// get sign up form
 exports.getSignupForm = catchAsync(async (req, res, next) => {
   res.status(200).render('signup', {
     title: 'Sign up for an account'
   });
 });
 
+// get profile page
 exports.getAccount = (req, res) => {
-  res.status(200).render('account', {
+  res.status(200).render('profile', {
     title: 'Your account'
   });
 };
@@ -73,6 +79,7 @@ exports.getMyTours = catchAsync(async (req, res, next) => {
 
   res.status(200).render('overview', {
     title: 'My Tours',
+    subtitle: 'My booked tours',
     tours
   });
 });
@@ -99,8 +106,8 @@ exports.updateUserData = catchAsync(async (req, res, next) => {
 exports.getIndex = catchAsync(async (req, res, next) => {
   // 1) Filter the 3 best rated tours
   const tours = await Tour.find({
-    ratingsAverage: { $gte: 4.8 }
-  });
+    ratingsAverage: { $gte: 4 }
+  }).limit(3);
 
   // 2) rating[gte]=5&limit=2
   const reviews = await Review.find({
@@ -120,3 +127,17 @@ exports.getApiDoc = catchAsync(async (req, res, next) => {
     title: 'Api documentation'
   });
 });
+
+// get forgot password form
+exports.getPasswordForgot = (req, res) => {
+  res.status(200).render('passwordForgotForm', {
+    title: 'Renew password'
+  });
+};
+
+// get reset password form
+exports.getPasswordReset = (req, res) => {
+  res.status(200).render('passwordResetForm', {
+    title: 'Reset password'
+  });
+};

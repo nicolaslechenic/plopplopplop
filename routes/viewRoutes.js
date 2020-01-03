@@ -9,7 +9,9 @@ const {
   getSignupForm,
   getMyTours,
   updateUserData,
-  getApiDoc
+  getApiDoc,
+  getPasswordReset,
+  getPasswordForgot
 } = require('../controllers/viewsController');
 const { isLoggedIn, protect } = require('../controllers/authController');
 
@@ -32,4 +34,9 @@ router.post('/submit-user-data', protect, updateUserData);
 
 router.get('/api-doc', getApiDoc);
 
+// password forgot
+router.get('/forgot', getPasswordForgot);
+
+// password reset route
+router.get('/reset', getPasswordReset);
 module.exports = router;
