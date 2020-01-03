@@ -1427,10 +1427,12 @@ body {
       transform: translate(-35%, -50%); }
       @media only screen and (max-width: 37.5em) {
         .cta__img--logo {
-          transform: translate(-35%, -50%); } }
+          transform: translate(-35%, -50%);
+          width: 7rem;
+          height: 7rem; } }
       @media only screen and (max-width: 25em) {
         .cta__img--logo {
-          transform: translate(472%, 4%) scale(0.94);
+          transform: translate(0) scale(0.94);
           z-index: 9;
           width: 7rem;
           height: 7rem; } }
@@ -1441,19 +1443,13 @@ body {
       z-index: 9; }
       @media only screen and (max-width: 25em) {
         .cta__img--1 {
-          transform: translate(544%, 4%) scale(0.94);
-          z-index: 11;
-          width: 7rem;
-          height: 7rem; } }
+          display: none; } }
     .cta__img--2 {
       transform: translate(15%, -50%) scale(0.94);
       z-index: 8; }
       @media only screen and (max-width: 25em) {
         .cta__img--2 {
-          transform: translate(504%, 4%) scale(0.94);
-          z-index: 10;
-          width: 7rem;
-          height: 7rem; } }
+          display: none; } }
   .cta__content {
     display: grid;
     grid-template-rows: auto auto;
@@ -1542,7 +1538,8 @@ body {
   .raw [class^="card-"] {
     float: left;
     margin-left: 2rem;
-    margin-right: 2rem; }
+    margin-right: 2rem;
+    margin: 2rem; }
     @media only screen and (max-width: 56.25em) {
       .raw [class^="card-"] {
         width: 100% !important;
@@ -1881,7 +1878,8 @@ body {
 .section-map {
   position: relative;
   height: 65rem;
-  margin-top: calc(0px - var(--section-rotate)); }
+  margin-top: calc(0px - var(--section-rotate));
+  z-index: -1; }
 
 .section-pictures {
   display: -webkit-box;
