@@ -23,7 +23,7 @@ router.get('/tours', isLoggedIn, getOverview);
 
 router.get('/tour/:slug', isLoggedIn, getTour);
 router.get('/login', isLoggedIn, getLoginForm);
-router.get('/me', protect, getAccount);
+router.get('/profile', protect, getAccount);
 router.get('/signup', isLoggedIn, getSignupForm);
 
 router.get('/my-tours', protect, getMyTours);

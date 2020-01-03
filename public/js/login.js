@@ -16,7 +16,7 @@ export const login = async (email, password) => {
     if (res.data.status === 'success') {
       showAlert('success', 'Logged in successfully!');
       window.setTimeout(() => {
-        location.assign('/me');
+        location.assign('/profile');
       }, 1500);
     }
   } catch (err) {
@@ -58,7 +58,7 @@ export const signup = async (name, email, password, passwordConfirm) => {
     if (res.data.status === 'success') {
       showAlert('success', 'Signed in successfully!');
       window.setTimeout(() => {
-        location.assign('/me');
+        location.assign('/profile');
       }, 1500);
     }
     console.log(res);
