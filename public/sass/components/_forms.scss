@@ -58,7 +58,7 @@
     background-color: $color-gray-dark-4;
     border: none;
     border-bottom: 3px solid transparent;
-    width: 90%;
+    width: 100%;
     display: block;
     transition: all .3s;
     color: $color-gray-dark-3;
@@ -89,7 +89,7 @@
     background-color: $color-gray-subtle-1;
     border: none;
     border-bottom: 3px solid transparent;
-    width: 90%;
+    width: 100%;
     display: block;
     transition: all .3s;
     color: $color-gray-dark-1;
@@ -261,3 +261,12 @@
   }
 }
 
+.passwordForgot {
+  color: $color-gray-dark-1;
+  font-weight: 400;
+  margin-top: 3rem;
+
+  &:hover {
+    color: $color-primary;
+  }
+}

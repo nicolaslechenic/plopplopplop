@@ -2,6 +2,10 @@ extends base
 
 block content
   .raw
+    if subtitle && tours.length > 0
+      h2.heading-secondary.u-center-text(style="width: 100%; margin-bottom: 1.5rem")= subtitle
+    if subtitle && tours.length === 0
+      h2.heading-secondary.u-center-text(style="width: 100%; color: #55c57a; margin-bottom: 30rem") You haven't booked any tour yet 😞
     each tour in tours
       .card-1-of-3
         .card1

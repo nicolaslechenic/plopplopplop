@@ -74,6 +74,51 @@
         url(../img/tours/tour-2-cover.jpg);
     }
 
+    &--3 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light-subtle,
+          $color-primary-dark-subtle
+        ),
+        url(../img/tours/tour-3-1.jpg);
+    }
+
+    &--4 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light-subtle,
+          $color-primary-dark-subtle
+        ),
+        url(../img/tours/tour-4-1.jpg);
+    }
+
+    &--5 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light-subtle,
+          $color-primary-dark-subtle
+        ),
+        url(../img/tours/tour-5-1.jpg);
+    }
+
+    &--6 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light-subtle,
+          $color-primary-dark-subtle
+        ),
+        url(../img/tours/tour-6-1.jpg);
+    }
+
+    &--7 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light-subtle,
+          $color-primary-dark-subtle
+        ),
+        url(../img/tours/tour-7-1.jpg);
+    }
+
     &--8 {
       background-image: linear-gradient(
           to right bottom,
@@ -81,6 +126,15 @@
           $color-primary-dark-subtle
         ),
         url(../img/tours/tour-8-3.jpg);
+    }
+
+    &--9 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light-subtle,
+          $color-primary-dark-subtle
+        ),
+        url(../img/tours/tour-9-3.jpg);
     }
   }
 
@@ -300,8 +354,6 @@
     grid-row-gap: 1rem;
     margin-top: auto;
 
-    
-
     @include respond(tab-land) {
       grid-column-gap: 2rem;
     }
@@ -309,11 +361,11 @@
     @include respond(tab-port) {
       grid-column-gap: 15rem;
     }
-    
+
     @include respond(phone-small) {
       grid-column-gap: 5rem;
     }
-  
+
     &-value {
       font-weight: 700;
     }

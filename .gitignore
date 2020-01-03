@@ -6,3 +6,5 @@ config.env
 
 # Parcel cache files
 .cache
+
+dev-data/data/users.json
