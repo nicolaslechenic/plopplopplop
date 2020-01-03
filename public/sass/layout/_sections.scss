@@ -62,6 +62,7 @@
     position: relative;
     height: 65rem;
     margin-top: calc(0px - var(--section-rotate));
+    z-index: -1;
   }
 
   &-pictures {
