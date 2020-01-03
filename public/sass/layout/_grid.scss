@@ -81,10 +81,13 @@
   // select all elements with attributes starting with "col-"
 	[class^="card-"] {
 		float: left;
-		margin: $gutter-horizontal-sm;
+		margin-left: $gutter-horizontal-sm;
+		margin-right: $gutter-horizontal-sm;
+    margin: 2rem;
 
 		@include respond(tab-port) {
-			width: 100% !important;
+      width: 100% !important;
+      margin: 0 0 $gutter-vertical 0;
 		}
 	}
 
