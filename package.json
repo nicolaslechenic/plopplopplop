@@ -22,7 +22,7 @@
     "url": "git+https://github.com/Slashflex/Natours_node.js.git"
   },
   "author": "Slashflex",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Slashflex/Natours_node.js/issues"
   },
